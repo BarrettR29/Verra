@@ -14,8 +14,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.room.Room;
 
 import com.daclink.Verra.DB.AppDatabase;
-import com.daclink.Verra.DB.VerraDAO;
-import com.daclink.Verra.databinding.ActivityMainBinding;
+import com.daclink.Verra.DB.CartDAO;
+import com.daclink.Verra.DB.UsersDAO;
 import com.daclink.Verra.databinding.LogInBinding;
 
 import java.util.List;
@@ -30,7 +30,8 @@ public class LogIn extends AppCompatActivity {
     TextView error;
     Button signIn;
 
-    VerraDAO verraDAO;
+    UsersDAO usersDAO;
+    CartDAO cartDAO;
 
     public static Intent intentFactory(Context packageContext) {
         Intent intent = new Intent(packageContext, LogIn.class);
@@ -63,19 +64,30 @@ public class LogIn extends AppCompatActivity {
         signIn = binding.loginSignInButton;
         error = binding.logInErrorText;
 
-        verraDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
+        usersDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
                 .allowMainThreadQueries()
-                .build().VerraDAO();
+                .build().UsersDAO();
 
-        if (verraDAO.count() < 1) {
-            Log.d(INTENT_KEY_STRING, "No entries in db - creating defaults");
+        cartDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
+                .allowMainThreadQueries()
+                .build().CartDAO();
+
+        if (usersDAO.count() < 1) {
+            Log.d(INTENT_KEY_STRING, "No entries in users db - creating defaults");
             String testuser1 = "testuser1";
             String admin2 = "admin2";
-            Verra user1 = new Verra(testuser1, testuser1, false);
-            Verra user2 = new Verra(admin2,admin2, true);
+            Users user1 = new Users(testuser1, testuser1, false);
+            Users user2 = new Users(admin2,admin2, true);
 
-            verraDAO.insert(user1);
-            verraDAO.insert(user2);
+            usersDAO.insert(user1);
+            usersDAO.insert(user2);
+        }
+
+        if (cartDAO.count() < 1) {
+            Log.d(INTENT_KEY_STRING, "No entries in cart db - creating defaults");
+            Cart cart1 = new Cart(1, "testuser1");
+
+            cartDAO.insert(cart1);
         }
 
         signIn.setOnClickListener(view -> {
@@ -88,9 +100,9 @@ public class LogIn extends AppCompatActivity {
     private void trySignIn(SharedPreferences prefs) {
         String name = username.getText().toString();
         String pass = password.getText().toString();
-        List<Verra> userList;
+        List<Users> userList;
 
-        userList = verraDAO.getUserByName(name);
+        userList = usersDAO.getUserByName(name);
 
         SharedPreferences.Editor editor = prefs.edit();
 

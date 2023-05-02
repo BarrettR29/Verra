@@ -5,10 +5,8 @@ import androidx.room.PrimaryKey;
 
 import com.daclink.Verra.DB.AppDatabase;
 
-import java.util.Date;
-
 @Entity(tableName =  AppDatabase.USER_TABLE)
-public class Verra {
+public class Users {
 
     @PrimaryKey(autoGenerate = true)
     private int userID;
@@ -17,10 +15,10 @@ public class Verra {
     private String password;
     private boolean isAdmin;
 
-    private static final String USER_TABLE = "verra";
+    private static final String USER_TABLE = "user_table";
 
 
-    public Verra(String name, String password, boolean isAdmin) {
+    public Users(String name, String password, boolean isAdmin) {
         this.name = name;
         this.password = password;
         this.isAdmin = isAdmin;

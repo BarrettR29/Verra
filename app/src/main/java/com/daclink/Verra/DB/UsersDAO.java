@@ -6,29 +6,29 @@ import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
 
-import com.daclink.Verra.Verra;
+import com.daclink.Verra.Users;
 
 import java.util.List;
 
 @Dao
-public interface VerraDAO {
+public interface UsersDAO {
     @Insert
-    void insert(Verra... verras);
+    void insert(Users... users);
 
 
     @Update
-    void update(Verra... verras);
+    void update(Users... users);
 
 
     @Delete
-    void delete(Verra verra);
+    void delete(Users users);
 
 
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE userID = :userId")
-    List<Verra> getUserById(int userId);
+    List<Users> getUserById(int userId);
 
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE name = :name")
-    List<Verra> getUserByName(String name);
+    List<Users> getUserByName(String name);
 
     @Query("SELECT COUNT(*) FROM " + AppDatabase.USER_TABLE)
     int count();
