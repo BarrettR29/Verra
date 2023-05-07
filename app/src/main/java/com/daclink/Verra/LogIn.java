@@ -29,6 +29,7 @@ public class LogIn extends AppCompatActivity {
     EditText password;
     TextView error;
     Button signIn;
+    Button signUp;
 
     UsersDAO usersDAO;
     CartDAO cartDAO;
@@ -63,6 +64,7 @@ public class LogIn extends AppCompatActivity {
         password = binding.loginEditTextPassword;
         signIn = binding.loginSignInButton;
         error = binding.logInErrorText;
+        signUp = binding.loginSignUpButton;
 
         usersDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
                 .allowMainThreadQueries()
@@ -89,6 +91,13 @@ public class LogIn extends AppCompatActivity {
 
             cartDAO.insert(cart1);
         }
+
+
+        signUp.setOnClickListener(view -> {
+            Intent intent = SignUp.intentFactory(getApplicationContext());
+            startActivity(intent);
+        });
+
 
         signIn.setOnClickListener(view -> {
             trySignIn(prefs);
