@@ -1,49 +1,60 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
     <EditText
-        android:id="@+id/signUpEditTextPassword"
+        android:id="@+id/editUserIDEditText"
         android:layout_width="242dp"
         android:layout_height="58dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="280dp"
+        android:layout_marginBottom="424dp"
         android:backgroundTint="#4A7350"
         android:ems="10"
         android:gravity="center"
-        android:hint="@string/loginPasswordHint"
+        android:hint="User ID"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainActivityDisplay" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/signUpEditTextConfirmPassword"
+        android:id="@+id/editUserPasswordEditText"
         android:layout_width="242dp"
         android:layout_height="58dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="208dp"
+        android:layout_marginBottom="256dp"
         android:backgroundTint="#4A7350"
         android:ems="10"
         android:gravity="center"
-        android:hint="@string/signUpConfirmPasswordHint"
+        android:hint="Password"
         android:inputType="textPersonName"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainActivityDisplay" />
+        app:layout_constraintStart_toStartOf="parent" />
 
     <EditText
-        android:id="@+id/signUpEditTextUsername"
+        android:id="@+id/editUserIsAdminEditText"
         android:layout_width="242dp"
         android:layout_height="58dp"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="352dp"
+        android:layout_marginBottom="184dp"
+        android:backgroundTint="#4A7350"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Is Admin? true/false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/editUserUsernameEditText"
+        android:layout_width="242dp"
+        android:layout_height="58dp"
+        android:layout_marginBottom="336dp"
         android:backgroundTint="#4A7350"
         android:ems="10"
         android:gravity="center"
@@ -52,21 +63,29 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/editUsertextView"
+        android:layout_width="326dp"
+        android:layout_height="155dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="28dp"
+        android:text="TextView"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/mainActivityDisplay" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/signUpButton"
+        android:id="@+id/editUserSubmitButton"
         android:layout_width="174dp"
         android:layout_height="96dp"
         android:backgroundTint="#4E8353"
-        android:text="Sign Up"
+        android:text="Submit"
         app:iconTint="#4CAF50"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.848" />
-
+        app:layout_constraintVertical_bias="0.922" />
 </androidx.constraintlayout.widget.ConstraintLayout>

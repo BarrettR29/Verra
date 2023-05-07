@@ -24,9 +24,16 @@ public class MainActivity extends AppCompatActivity {
     Button adminButton;
     Button logOutButton;
 
+
+
     UsersDAO usersDAO;
 
     List<Users> usersList;
+
+    public static Intent intentFactory(Context packageContext) {
+        Intent intent = new Intent(packageContext, MainActivity.class);
+        return intent;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,53 +56,22 @@ public class MainActivity extends AppCompatActivity {
             startActivity(intent);
         }
 
-//        mainDisplay.setText("Hello, " + );
+        adminButton.setOnClickListener(view -> {
+            Intent intent = Admin.intentFactory(getApplicationContext());
+            startActivity(intent);
+        });
+
+        logOutButton.setOnClickListener(view -> {
+            editor.putBoolean("is_logged_in", false);
+
+            Intent intent = LogIn.intentFactory(getApplicationContext());
+            startActivity(intent);
+        });
+
 
         usersDAO = Room.databaseBuilder(this, AppDatabase.class, AppDatabase.DATABASE_NAME)
                 .allowMainThreadQueries()
                 .build().UsersDAO();
-
-//        Intent intent = LogIn.intentFactory(getApplicationContext());
-//        startActivity(intent);
-
-//        refreshDisplay();
-
-//        submit.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                submitGymLog();
-//                refreshDisplay();
-//            }
-//        });
     }
 
-
-//    private void submitGymLog() {
-//        String myExercise = exercise.getText().toString();
-//        double myWeight = Double.parseDouble(weight.getText().toString());
-//        int myReps = Integer.parseInt(reps.getText().toString());
-//
-//        Verra log = new Verra(myExercise, myWeight, myReps);
-//        verraDAO.insert(log);
-//    }
-
-//    private void refreshDisplay() {
-//        verraList = verraDAO.getVerras();
-//        if (!verraList.isEmpty()) {
-//            StringBuilder sb = new StringBuilder();
-//            for (Verra log : verraList) {
-//                sb.append(log.toString());
-//            }
-//            mainDisplay.setText(sb.toString());
-//        }
-//        else {
-//            mainDisplay.setText(R.string.no_logs_message);
-//        }
-//    }
-
-
-    public static Intent intentFactory(Context packageContext) {
-        Intent intent = new Intent(packageContext, MainActivity.class);
-        return intent;
-    }
 }

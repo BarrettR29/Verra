@@ -33,4 +33,6 @@ public interface UsersDAO {
     @Query("SELECT COUNT(*) FROM " + AppDatabase.USER_TABLE)
     int count();
 
+    @Query("SELECT * FROM " + AppDatabase.USER_TABLE)
+    List<Users> getAllUsers();
 }
