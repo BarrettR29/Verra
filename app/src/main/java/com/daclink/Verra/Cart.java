@@ -21,11 +21,10 @@ public class Cart {
 
     @Override
     public String toString() {
-        return "Cart{" +
-                "cartID=" + cartID +
-                ", productCount=" + productCount +
-                ", userID='" + userID + '\'' +
-                '}';
+        return "cartID=" + cartID + "\n" +
+                "productCount=" + productCount + "\n" +
+                "userID='" + userID + "\n" +
+                "----------------------------" + "\n";
     }
 
     public int getCartID() {
