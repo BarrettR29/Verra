@@ -42,6 +42,10 @@ public class Admin extends AppCompatActivity {
             startActivity(intent);
         });
 
+        editOrders.setOnClickListener(view -> {
+            Intent intent = EditOrder.intentFactory(getApplicationContext());
+            startActivity(intent);
+        });
 
     }
 

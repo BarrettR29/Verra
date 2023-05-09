@@ -30,9 +30,13 @@ public interface UsersDAO {
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE + " WHERE name = :name")
     List<Users> getUserByName(String name);
 
+
     @Query("SELECT COUNT(*) FROM " + AppDatabase.USER_TABLE)
     int count();
 
     @Query("SELECT * FROM " + AppDatabase.USER_TABLE)
     List<Users> getAllUsers();
+//
+//    @Query("UPDATE * FROM " + AppDatabase.USER_TABLE + " WHERE userID = :userId")
+//    Users updateUser(int ID, String name, String password);
 }

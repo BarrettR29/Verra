@@ -17,7 +17,17 @@
             android:windowSoftInputMode="adjustPan"
             />
         <activity
+            android:name=".EditUser"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity
             android:name=".SignUp"
+            android:exported="false"
+            android:windowSoftInputMode="adjustPan"
+            />
+        <activity
+            android:name=".EditOrder"
             android:exported="false"
             android:windowSoftInputMode="adjustPan"
             />

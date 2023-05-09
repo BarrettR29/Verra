@@ -119,6 +119,8 @@ public class LogIn extends AppCompatActivity {
 
             if (userList.get(0).getPassword().equals(pass)) {
                 editor.putString("username", name);
+                editor.commit();
+//                Log.d("aasdsadas1", prefs.getString("username", "error"));
                 Intent intent = MainActivity.intentFactory(getApplicationContext());
                 startActivity(intent);
             }
