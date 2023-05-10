@@ -72,6 +72,9 @@ public class EditOrder extends AppCompatActivity {
         String tempCountString = productCount.getText().toString();
         int parsedCount = Integer.parseInt(tempCountString);
 
+        String tempUserIDString = userID.getText().toString();
+        int parsedUserID = Integer.parseInt(tempUserIDString);
+
         if (cartDAO.getCartById(parsedCartID) == null) {
             new StyleableToast
                     .Builder(getApplicationContext())
@@ -81,7 +84,7 @@ public class EditOrder extends AppCompatActivity {
                     .show();
         }
         else {
-            Cart updatedCart = new Cart(parsedCount, userID.getText().toString());
+            Cart updatedCart = new Cart(parsedCount, parsedUserID);
             updatedCart.setCartID(parsedCartID);
 
             cartDAO.update(updatedCart);

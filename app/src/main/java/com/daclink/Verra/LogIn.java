@@ -87,7 +87,7 @@ public class LogIn extends AppCompatActivity {
 
         if (cartDAO.count() < 1) {
             Log.d(INTENT_KEY_STRING, "No entries in cart db - creating defaults");
-            Cart cart1 = new Cart(1, "testuser1");
+            Cart cart1 = new Cart(1, 0);
 
             cartDAO.insert(cart1);
         }
@@ -120,16 +120,14 @@ public class LogIn extends AppCompatActivity {
             if (userList.get(0).getPassword().equals(pass)) {
                 editor.putString("username", name);
                 editor.commit();
-//                Log.d("aasdsadas1", prefs.getString("username", "error"));
                 Intent intent = MainActivity.intentFactory(getApplicationContext());
                 startActivity(intent);
             }
             else {
-
+                error.setVisibility(View.VISIBLE);
             }
         }
         else {
-            Log.d(INTENT_KEY_STRING, "test");
             error.setVisibility(View.VISIBLE);
         }
     }

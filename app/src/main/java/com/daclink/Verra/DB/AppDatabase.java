@@ -10,7 +10,7 @@ import com.daclink.Verra.Cart;
 import com.daclink.Verra.Smoothies;
 import com.daclink.Verra.Users;
 
-@Database(entities = {Users.class, Cart.class, Smoothies.class}, version = 2)
+@Database(entities = {Users.class, Cart.class, Smoothies.class}, version = 1)
 public abstract class AppDatabase extends RoomDatabase {
     public static final String DATABASE_NAME = "verra.db";
     public static final String USER_TABLE = "user_table";
