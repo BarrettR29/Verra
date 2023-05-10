@@ -12,9 +12,9 @@ public class Cart {
     private int cartID;
 
     private Integer productCount;
-    private String userID;
+    private Integer userID;
 
-    public Cart(Integer productCount, String userID) {
+    public Cart(Integer productCount, Integer userID) {
         this.productCount = productCount;
         this.userID = userID;
     }
@@ -43,11 +43,11 @@ public class Cart {
         this.productCount = productCount;
     }
 
-    public String getUserID() {
+    public Integer getUserID() {
         return userID;
     }
 
-    public void setUserID(String userID) {
+    public void setUserID(Integer userID) {
         this.userID = userID;
     }
 }

@@ -16,6 +16,8 @@ import com.daclink.Verra.DB.UsersDAO;
 import com.daclink.Verra.databinding.AdminBinding;
 import com.daclink.Verra.databinding.SignUpBinding;
 
+import java.util.List;
+
 import io.github.muddz.styleabletoast.StyleableToast;
 
 public class SignUp extends AppCompatActivity {
@@ -63,6 +65,8 @@ public class SignUp extends AppCompatActivity {
 
 
     private void trySignUp() {
+        List<Users> user = usersDAO.getUserByName(username.getText().toString());
+
         if (!firstPassword.getText().toString().equals(secondPassword.getText().toString())) {
             new StyleableToast
                     .Builder(getApplicationContext())
@@ -70,10 +74,25 @@ public class SignUp extends AppCompatActivity {
                     .textColor(Color.WHITE)
                     .backgroundColor(Color.RED)
                     .show();
+            return;
+        }
+        else if (user.size() > 0) {
+            new StyleableToast
+                    .Builder(getApplicationContext())
+                    .text("User already exists!")
+                    .textColor(Color.WHITE)
+                    .backgroundColor(Color.RED)
+                    .show();
         }
         else {
             Users newUser = new Users(username.getText().toString(), firstPassword.getText().toString(), false);
             usersDAO.insert(newUser);
+            new StyleableToast
+                    .Builder(getApplicationContext())
+                    .text("User created!")
+                    .textColor(Color.WHITE)
+                    .backgroundColor(Color.GREEN)
+                    .show();
         }
     }
 
